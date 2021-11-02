@@ -6,10 +6,5 @@ resource "aws_instance" "WebServer" {
   subnet_id = "${aws_subnet.subnet_WebServer_public.id}"
   vpc_security_group_ids = ["${aws_security_group.WebServer.id}"]
 
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt install nginx"
-    ]
-  }
 }
 
