@@ -23,3 +23,20 @@ output "private_ip" {
   description = "The private IP address assigned to the instance."
   value       = element(concat(aws_instance.WebServer.*.private_ip, [""]), 0)
 }
+
+
+output "db_password" {
+  description = "The DB password to to the RDS database"
+  value       = random_password.password.result
+  sensitive   = true
+}
+
+#Output the address (aka hostname) of the RDS instance
+output "rds_instance_address" {
+  value = "${aws_db_instance.SqlServer.address}"
+}
+
+# Output endpoint (hostname:port) of the RDS instance
+output "rds_instance_endpoint" {
+  value = "${aws_db_instance.SqlServer.endpoint}"
+}
