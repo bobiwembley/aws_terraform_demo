@@ -3,8 +3,6 @@ output "elb_id" {
   value       = concat(aws_elb.autoscalling_group_elb_Web.*.id, [""])[0]
 }
 
-
-
 output "elb_name" {
   description = "The name of the ELB"
   value       = concat(aws_elb.autoscalling_group_elb_Web.*.name, [""])[0]
