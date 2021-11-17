@@ -3,16 +3,12 @@ name: base-infrastructure
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
 
 defaults:
   run:
     shell: bash
-
-env:
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 jobs:
   terraform:
