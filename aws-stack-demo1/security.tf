@@ -17,5 +17,16 @@ resource "aws_security_group" "WebServer" {
         protocol    = "tcp"
 
     }
-}
+    egress {
+      cidr_blocks = ["0.0.0.0/0" ]
+      description = "outcomming traffic from Ec2"
+      from_port = 0
+      to_port   = 0 
+      protocol         = "-1"
+      ipv6_cidr_blocks = ["::/0"] 
+    }
+    tags = {
+    Name = "WebServer_Subnet_allow_all"
+  }
 
+}
