@@ -17,3 +17,19 @@ output "elb_instances" {
   description = "The list of instances in the ELB"
   value       = flatten(aws_elb.autoscalling_group_elb_Web.*.instances)
 }
+
+output "db_password" {
+  description = "The DB password to to the RDS database"
+  value       = random_password.password.result
+  sensitive   = true
+}
+
+#Output the address (aka hostname) of the RDS instance
+output "rds_instance_address" {
+  value = "${aws_db_instance.SqlServer.address}"
+}
+
+# Output endpoint (hostname:port) of the RDS instance
+output "rds_instance_endpoint" {
+  value = "${aws_db_instance.SqlServer.endpoint}"
+}

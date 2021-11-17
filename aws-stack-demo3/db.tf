@@ -1,3 +1,8 @@
+resource "random_password" "password" {
+  length           = 16
+  special          = false
+
+}
 resource "aws_db_instance" "SqlServer" {
   allocated_storage      = 10
   engine                 = "mysql"
@@ -5,7 +10,7 @@ resource "aws_db_instance" "SqlServer" {
   instance_class         = "db.t3.micro"
   name                   = "koukaDb"
   username               = "kouka"
-  password               = "koukaPwd"
+  password               = random_password.password.result
   parameter_group_name   = "default.mysql5.7"
   skip_final_snapshot    = true
   db_subnet_group_name   = aws_db_subnet_group.RDS_Subnet.id
