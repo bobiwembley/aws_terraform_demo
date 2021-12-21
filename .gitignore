@@ -32,3 +32,6 @@ ssh_key/*
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# Specific credential 
+*.pem
